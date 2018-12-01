@@ -49,7 +49,7 @@ def main():
                     print(r)
             else:
                 results = [1 for _ in results]
-                print("{} registros afetados.".format(sum(results)))
+                print("{} affected rows.".format(sum(results)))
 
         sql = input(input_string)
 
