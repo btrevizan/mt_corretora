@@ -17,9 +17,9 @@ class Database:
     def execute(self, sql, *values):
         self._cursor.execute(sql, *values)
         self._conn.commit()
+        return self._fetch_it()
 
-    def fetch(self, sql, *values):
-        self._cursor.execute(sql, *values)
+    def _fetch_it(self):
         row = self._cursor.fetchone()
 
         while row:
