@@ -10,7 +10,7 @@
 -- c. No mínimo uma delas (diferente da consulta acima) deve necessitar do operador NOT EXISTS para responder questões
 -- do tipo TODOS ou NENHUM que <referencia>
 -- c1. O valor total da conta e nome dos clientes que investem apenas em ações do tipo ON.
-
+-- c2. O nome dos traders que atendem clientes apenas com perfil agressivo.
 
 -- f. Definir um procedimento armazenado que deve ser disparado ao atualizar uma tabela (inserção, atualização ou
 -- remoção de tuplas). Você deve pesquisar a linguagem do SGBD escolhido para definir um procedimento, e programar
