@@ -1,5 +1,16 @@
+from src import Database
+
+
 def main():
-    pass
+    print("A bunch of information...")
+    db = Database()
+
+    sql = input(">> ")
+    while sql != 'exit':
+        # Execute sql
+        # Print results
+
+        sql = input(">> ")
 
 
 if __name__ == "__main__":
