@@ -1,4 +1,5 @@
 from src import Database
+import psycopg2
 
 
 def main():
@@ -8,7 +9,14 @@ def main():
     sql = input(">> ")
     while sql != 'exit':
         # Execute sql
-        # Print results
+        try:
+            # Call execute
+            pass
+        except psycopg2.DatabaseError as e:
+            print(e)
+        else:
+            # Print results
+            pass
 
         sql = input(">> ")
 
