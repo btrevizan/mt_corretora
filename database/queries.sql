@@ -25,7 +25,7 @@ GROUP BY P.Nome, F.co_funcionario
 ORDER BY Atendimentos DESC;
 
 -- b. No mínimo duas delas deve necessitar ser respondida com subconsulta;
--- b2. O nome do cliente e o valor total em ativos do tipo título prefixado.
+-- b2. O nome do cliente e o valor total em ativos comprador e vendidos do tipo título prefixado.
 SELECT P.nome, prefix_comprados, prefix_vendidos 
 FROM(	
 	SELECT P.cpf, SUM( (OT.quantidade * OT.preco_unitario) ) Prefix_Comprados
@@ -43,7 +43,7 @@ LEFT JOIN (SELECT P.cpf, SUM( (OT.quantidade * OT.preco_unitario) ) Prefix_Vendi
 	WHERE T.tipo = 'PreFixado' AND OT.compra = false
 	GROUP BY P.cpf) PreFix_Vendidos
 	USING(cpf)
-INNER JOIN Pessoa P USING(cpf)
+INNER JOIN Pessoa P USING(cpf);
 
 -- c. No mínimo uma delas (diferente da consulta acima) deve necessitar do operador NOT EXISTS para responder questões
 -- do tipo TODOS ou NENHUM que <referencia>
