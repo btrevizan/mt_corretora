@@ -1,7 +1,17 @@
 -- a. No mínimo uma delas deve necessitar ser respondida com a cláusula group by
--- a1. O nome do cliente e o valor total de sua conta (saldo + valor dos ativos).
 -- a2. O nome do trader e o rendimento médio de seus clientes.
+SELECT t.nome, AVG(saldo - (SUM(deposito.quantidade) - SUM(saque.quantidade)))
+FROM cliente
+NATURAL JOIN trader as t
+NATURAL JOIN conta_vinculada
+JOIN movimentacao as deposito ON deposito.co_conta_vinculada = conta_vinculada.co_conta_vinculada AND deposito.tipo = 'D'
+JOIN movimentacao as saque ON saque.co_conta_vinculada = conta_vinculada.co_conta_vinculada AND saque.tipo = 'S'
+GROUP BY t.nome;
+
 -- a3. O nome do trader e o total de remuneração por ano (salario + bonus). O salário de um trader é de 150 mil por ano.
+SELECT t.nome
+
+
 -- a4. O nome do funcionário de suporte com mais atendimentos.
 
 -- b. No mínimo duas delas deve necessitar ser respondida com subconsulta;
@@ -18,3 +28,4 @@
 -- serão valorizados.
 -- f1. Quando uma movimentacão é criada, atualizar o saldo do cliente.
 -- f2. Quando uma ordem é criada, atualizar o saldo do cliente.
+-- f3. Quando o status de uma ordem é atualizado, atualizar o saldo do cliente.
