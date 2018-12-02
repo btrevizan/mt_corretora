@@ -123,6 +123,15 @@ INSERT INTO Conta_Vinculada VALUES('23455', 720, 748, 8);
 INSERT INTO Conta_Vinculada VALUES('48599283223', 941, 1, 9);
 INSERT INTO Conta_Vinculada VALUES('3510673202', 823, 41, 10);
 
+INSERT INTO Movimentacao VALUES(DEFAULT, 500, 'd', DEFAULT, '356300');
+INSERT INTO Movimentacao VALUES(DEFAULT, 4200, 'd', DEFAULT, '48599283223');
+INSERT INTO Movimentacao VALUES(DEFAULT, 2000, 'd', DEFAULT, '431923');
+INSERT INTO Movimentacao VALUES(DEFAULT, 1500, 'd', DEFAULT, '673019');
+INSERT INTO Movimentacao VALUES(DEFAULT, 3500, 'd', DEFAULT, '8479231');
+INSERT INTO Movimentacao VALUES(DEFAULT, 1000, 's', DEFAULT, '356300');
+INSERT INTO Movimentacao VALUES(DEFAULT, 5000, 'd', DEFAULT, '3510673202');
+INSERT INTO Movimentacao VALUES(DEFAULT, 1250, 's', DEFAULT, '3510673202');
+
 INSERT INTO Atendimento VALUES(DEFAULT, 'Nao consigo adicionar uma conta', 3, DEFAULT, DEFAULT);
 INSERT INTO Atendimento VALUES(DEFAULT, 'Por que nao consigo comprar acoes?', 4, DEFAULT, DEFAULT);
 INSERT INTO Atendimento VALUES(DEFAULT, 'Existe alguma ferramenta analitica disponivel nesse aplicativo?', 1, DEFAULT, DEFAULT);
@@ -266,14 +275,3 @@ INSERT INTO RL_TraderCliente VALUES(1, 10);
 INSERT INTO RL_TraderCliente VALUES(1, 9);
 INSERT INTO RL_TraderCliente VALUES(2, 8);
 INSERT INTO RL_TraderCliente VALUES(2, 7);
-
-
-
-
-
-
-
-
-
-
-
