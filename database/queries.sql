@@ -53,8 +53,7 @@ FROM cliente NATURAL JOIN pessoa
 WHERE co_cliente IN (SELECT co_cliente FROM ordem_acao NATURAL JOIN acao WHERE acao.nome LIKE '%ON%') AND
 NOT EXISTS (SELECT * FROM ordem_titulo WHERE co_cliente = cliente.co_cliente);
 
--- c2. O nome dos traders que aconselham apenas clientes com perfil agressivo (e que ja aconselharam pelo menos um cliente).
-
+-- c2. O nome dos traders que aconselham apenas clientes com perfil agressivo e que ja aconselharam pelo menos um cliente.
 SELECT P.nome Trader
 FROM Trader T NATURAL JOIN Pessoa P
 WHERE NOT EXISTS(SELECT *
