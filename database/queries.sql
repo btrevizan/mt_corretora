@@ -17,15 +17,13 @@ GROUP BY P.nome
 ORDER BY Remuneracao DESC;
 
 -- a4. O nome do funcionário de suporte com mais atendimentos.
-
 SELECT P.Nome, COUNT(*) Atendimentos
 FROM Funcionario F
 INNER JOIN Pessoa P USING(cpf)
 INNER JOIN RL_Chat Ch USING(co_funcionario)
 GROUP BY P.Nome, F.co_funcionario
 ORDER BY Atendimentos DESC;
-														   
-														   
+
 -- b. No mínimo duas delas deve necessitar ser respondida com subconsulta;
 -- b2. O nome do cliente e o valor total em ativos do tipo título prefixado.
 SELECT P.nome, SUM( (OT.quantidade * OT.preco_unitario) ) Valor
@@ -40,11 +38,3 @@ GROUP BY P.cpf, P.nome;
 -- do tipo TODOS ou NENHUM que <referencia>
 -- c1. O valor total da conta e nome dos clientes que investem apenas em ações do tipo ON.
 -- c2. O nome dos traders que atendem clientes apenas com perfil agressivo.
-
--- f. Definir um procedimento armazenado que deve ser disparado ao atualizar uma tabela (inserção, atualização ou
--- remoção de tuplas). Você deve pesquisar a linguagem do SGBD escolhido para definir um procedimento, e programar
--- este procedimento nesta linguagem. Será considerada a utilidade do procedimento proposto. Procedimentos triviais não
--- serão valorizados.
--- f1. Quando uma movimentacão é criada, atualizar o saldo do cliente.
--- f2. Quando uma ordem é criada, atualizar o saldo do cliente.
--- f3. Quando o status de uma ordem é atualizado, atualizar o saldo do cliente.
