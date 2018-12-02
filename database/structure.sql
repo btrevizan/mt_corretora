@@ -108,6 +108,7 @@ CREATE TABLE Ordem_Acao(
 	preco_unitario REAL NOT NULL CHECK(preco_unitario >= 0),
 	data_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	executada BOOLEAN NOT NULL DEFAULT FALSE,
+	compra BOOLEAN NOT NULL DEFAULT TRUE,
 	FOREIGN KEY(co_cliente) REFERENCES Cliente,
 	FOREIGN KEY(co_acao) REFERENCES Acao
 );
@@ -121,6 +122,7 @@ CREATE TABLE Ordem_Titulo(
 	preco_unitario REAL NOT NULL CHECK(preco_unitario >= 0),
 	data_hora TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	executada BOOLEAN NOT NULL DEFAULT FALSE,
+	compra BOOLEAN NOT NULL DEFAULT TRUE,
 	FOREIGN KEY(co_cliente) REFERENCES Cliente,
 	FOREIGN KEY(co_titulo) REFERENCES Titulo
 );
