@@ -160,6 +160,14 @@ CREATE TABLE RL_TraderCliente(
 	FOREIGN KEY(co_cliente) REFERENCES Cliente
 );
 									
+CREATE TABLE Movimentacao(
+	co_movimentacao SERIAL NOT NULL PRIMARY KEY,
+	quantidade REAL NOT NULL CHECK(quantidade >= 0),
+	tipo VARCHAR(8) NOT NULL CHECK(tipo IN('saque', 'deposito')),
+	data_hora TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	co_conta VARCHAR(15) NOT NULL,
+	FOREIGN KEY(co_conta) REFERENCES conta_vinculada
+);
 									
 									
 									
@@ -175,4 +183,7 @@ CREATE TABLE RL_TraderCliente(
 									
 									
 									
-
+									
+									
+									
+									
