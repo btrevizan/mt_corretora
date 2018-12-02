@@ -50,6 +50,7 @@ CREATE TABLE Cliente(
 	perfil VARCHAR(11) NOT NULL CHECK(perfil IN ('agressivo',
 												'moderado',
 												'conservador')),
+  saldo REAL NOT NULL DEFAULT 0,
 	FOREIGN KEY(cpf) REFERENCES Pessoa
 );
 
@@ -168,22 +169,3 @@ CREATE TABLE Movimentacao(
 	co_conta VARCHAR(15) NOT NULL,
 	FOREIGN KEY(co_conta) REFERENCES conta_vinculada
 );
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
