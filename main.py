@@ -48,8 +48,7 @@ def main():
                 for r in results:
                     print(r)
             else:
-                results = [1 for _ in results]
-                print("{} affected rows.".format(sum(results)))
+                print("Query executed successfully.")
 
         sql = input(input_string)
 
