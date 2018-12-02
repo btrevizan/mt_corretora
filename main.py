@@ -14,6 +14,10 @@ def queries():
 
 
 def main():
+    db = Database()
+    predefined_queries = queries()
+    input_string = "mt-corretora> "
+
     print("MT Corretora (Database)")
     print("A qualquer momento, você pode pressinar as seguintes opções para executar os comandos pré-definidos:")
     print("1 - O nome do trader e o valor médio de seus clientes.")
@@ -23,10 +27,6 @@ def main():
     print("5 - O saldo e nome dos clientes que investem apenas em ações do tipo ON.")
     print("6 - O nome dos traders que aconselham apenas clientes com perfil agressivo e que ja aconselharam pelo menos um cliente.")
     print("Digite 'exit' para sair.")
-
-    db = Database()
-    predefined_queries = queries()
-    input_string = "mt-corretora> "
 
     sql = input(input_string)
     while sql != 'exit':
