@@ -25,17 +25,17 @@ GROUP BY P.Nome, F.co_funcionario
 ORDER BY Atendimentos DESC;
 
 -- b. No mínimo duas delas deve necessitar ser respondida com subconsulta;
--- b2. O nome do cliente e o valor total em ativos do tipo título prefixado.
-SELECT P.nome, prefix_comprados, prefix_vendidos 
+-- b2. O nome do cliente e o valor total de investimentos e retornos em ativos do tipo título prefixado.
+SELECT P.nome, valor_investido_em_prefixados, valor_recebido_em_prefixados 
 FROM(	
-	SELECT P.cpf, SUM( (OT.quantidade * OT.preco_unitario) ) Prefix_Comprados
+	SELECT P.cpf, SUM( (OT.quantidade * OT.preco_unitario) ) valor_investido_em_prefixados
 	FROM Cliente C 
 	INNER JOIN Pessoa P USING(cpf)
 	INNER JOIN ordem_titulo OT USING(co_cliente)
 	INNER JOIN titulo T USING(co_titulo)
 	WHERE T.tipo = 'PreFixado' AND OT.compra = true
 	GROUP BY P.cpf) PreFix_Comprados
-LEFT JOIN (SELECT P.cpf, SUM( (OT.quantidade * OT.preco_unitario) ) Prefix_Vendidos
+LEFT JOIN (SELECT P.cpf, SUM( (OT.quantidade * OT.preco_unitario) ) valor_recebido_em_prefixados
 	FROM Cliente C 
 	INNER JOIN Pessoa P USING(cpf)
 	INNER JOIN ordem_titulo OT USING(co_cliente)
@@ -53,4 +53,16 @@ FROM cliente NATURAL JOIN pessoa
 WHERE co_cliente IN (SELECT co_cliente FROM ordem_acao NATURAL JOIN acao WHERE acao.nome LIKE '%ON%') AND
 NOT EXISTS (SELECT * FROM ordem_titulo WHERE co_cliente = cliente.co_cliente);
 
--- c2. O nome dos traders que atendem clientes apenas com perfil agressivo.
+-- c2. O nome dos traders que aconselham apenas clientes com perfil agressivo (e que ja aconselharam pelo menos um cliente).
+
+SELECT P.nome Trader
+FROM Trader T NATURAL JOIN Pessoa P
+WHERE NOT EXISTS(SELECT *
+				FROM RL_TraderCliente TC NATURAL JOIN Cliente C
+				 WHERE C.perfil <> 'agressivo'
+				 AND co_trader = T.co_trader
+				)
+AND T.co_trader IN(SELECT DISTINCT co_trader FROM RL_TraderCliente)
+
+
+
