@@ -33,8 +33,12 @@ def main():
         # Clear input
         if sql.isdigit():
             i = int(sql) - 1
-            sql = predefined_queries[i]
-            print(sql)
+
+            if i not in range(0, 6):
+                print("Invalid option")
+            else:
+                sql = predefined_queries[i]
+                print(sql)
 
         sql = sql.lower()
 
