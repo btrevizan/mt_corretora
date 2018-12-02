@@ -43,7 +43,7 @@ LEFT JOIN (SELECT P.cpf, SUM( (OT.quantidade * OT.preco_unitario) ) valor_recebi
 	WHERE T.tipo = 'PreFixado' AND OT.compra = false
 	GROUP BY P.cpf) PreFix_Vendidos
 	USING(cpf)
-INNER JOIN Pessoa P USING(cpf)
+INNER JOIN Pessoa P USING(cpf);
 
 -- c. No mínimo uma delas (diferente da consulta acima) deve necessitar do operador NOT EXISTS para responder questões
 -- do tipo TODOS ou NENHUM que <referencia>
