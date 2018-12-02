@@ -16,13 +16,14 @@ NATURAL JOIN bonus
 GROUP BY P.nome
 ORDER BY Remuneracao DESC;
 
--- a3. O nome do funcionário de suporte com mais atendimentos.
-SELECT P.Nome, COUNT(*) Atendimentos
+-- a3. Um ranking com os 5 funcionarios com mais atendimentos ao cliente registrados
+SELECT nome Funcionario, COUNT(*) Quantidade_de_atendimentos
 FROM Funcionario F
 INNER JOIN Pessoa P USING(cpf)
 INNER JOIN RL_Chat Ch USING(co_funcionario)
-GROUP BY P.Nome, F.co_funcionario
-ORDER BY Atendimentos DESC;
+GROUP BY P.nome, Ch.co_funcionario
+ORDER BY Quantidade_de_atendimentos DESC
+LIMIT 5;
 
 -- b. No mínimo duas delas deve necessitar ser respondida com subconsulta;
 -- b2. O nome do cliente e o valor total de investimentos e retornos em ativos do tipo título prefixado.
@@ -61,7 +62,4 @@ WHERE NOT EXISTS(SELECT *
 				 WHERE C.perfil <> 'agressivo'
 				 AND co_trader = T.co_trader
 				)
-AND T.co_trader IN(SELECT DISTINCT co_trader FROM RL_TraderCliente)
-
-
-
+AND T.co_trader IN(SELECT DISTINCT co_trader FROM RL_TraderCliente);
