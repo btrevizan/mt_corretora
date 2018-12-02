@@ -142,9 +142,9 @@ CREATE TABLE Bonus(
 	valor REAL NOT NULL CHECK(valor >= 0),
 	ano INT NOT NULL CHECK(ano >= 2018),
 	mes INT NOT NULL CHECK(mes >= 1 AND mes <= 12),
-	condicao VARCHAR(500) NOT NULL 
+	condicao REAL NOT NULL CHECK(condicao >= 0) 
 );
-
+									
 CREATE TABLE RL_TraderBonus(
 	co_bonus INT NOT NULL,
 	co_trader INT NOT NULL,
@@ -169,23 +169,3 @@ CREATE TABLE Movimentacao(
 	co_conta VARCHAR(15) NOT NULL,
 	FOREIGN KEY(co_conta) REFERENCES conta_vinculada
 );
-<<<<<<< HEAD
-=======
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
-									
->>>>>>> 47556ee991dfbd3522eb0efd27c902ce2c206e2c
