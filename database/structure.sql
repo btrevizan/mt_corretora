@@ -20,7 +20,7 @@ CREATE TABLE Acao(
 	nome VARCHAR(40) NOT NULL,
 	cotacao REAL NOT NULL,
 	co_empresa INT NOT NULL,
-	FOREIGN KEY(co_empresa) REFERENCES Empresas
+	FOREIGN KEY(co_empresa) REFERENCES Empresa
 );
 
 CREATE TABLE Titulo(
